@@ -641,3 +641,36 @@ streamsize타입값을 반환
 
 
 </프로그램 및 데이터 구조화>
+
+<순차 컨테이너와 문자열 분석>
+벡터에서 요소를 제거할때는 
+백터이름.erase(벡터이름.begin() + 인덱스) 를 사용하면 된다 
+이렇게 하면 벡터이름의 i번쨰 요소가 제거된다 
+주의할 점은 반복문에서 이 함수를 사용할 때 i번쨰 요소가 제거되면 i이후의 값들이
+하나 앞의 인덱스가 되기 때문에 i값을 바꿔서 반복문을 처리하면 안된다 
+
+반복문에 인덱스(i사용)이외에도 반복자를 사용할 수도 있는데 반복자는 다음과 같은 역할을한다
+-컨테이너와 컨테이너 내부 요소를 식별한다
+-해당 요소에 저장된 값을 검사할 수 있다
+-컨테이너 내부 요소 사이의 이동 연산을 제공한다
+-컨테이너를 효율적으로 사용하도록 연산을 제한한다 
+사용은 다음과 같이 한다 
+for(vector<Student_info>::size_type i = 0; i !+ student.size(); i++ {} (기본 인덱스 사용)
+for(vector<Student_info>::const_iterator iter = student.begin(); iter != student.end(); ++iter{
+	cout << (*iter).name << endl;
+}(반복자 사용)
+
+베거와 같은 모든 컨테이너는 다음 2개의 반복자 타입을 정의한다
+container-type::const_iterator 
+container-type::iterator
+container-type에는 컨테이너 타입이 들어가고 반복자를 사용하여 컨테이너에 저장된 값을 바꾸러면
+iterator타입을 사용하고 값을 읽기만 하려면 const_iterator를 사용한다 
+위의 예에서 student.begin()은 iterator타입을 반환하는데 const_iterator로 정의되어있다면
+iterator타입 값을 const_iterator타입 값으로 바꾼다 바꾸는것이 단방향이여서 반대로 바꾸지는 못한다
+또한 벡터이름.end()는 마지막 요소의 다음 값을 가리키기 떄문에 반복문에서는 값 != 벡터이름.end()
+이런식으로 사용한다
+또한 반복자로 얻어온 값을 이용할 떄 해당 요소에 접근하려고 역참조 연산자를 사용해서
+(*iter)이런식으로 사용한다 *iter는 iter가 가리키는 값을 반환하는데 .의 우선순위는 *의 우선순위보다
+높아서 괄호로 묶어서 사용한다 또한 (*iter).name을 iter->name으로 사용할 수 있다 
+
+</순차 컨테이너와 문자열 분석>
