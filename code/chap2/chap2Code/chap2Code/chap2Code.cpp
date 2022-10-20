@@ -9,17 +9,47 @@ using std::cout;
 using std::string;
 
 
+// 파라미터로 주어지는 문자열은 const로 주어집니다. 변경하려면 문자열을 복사해서 사용하세요.
+char* solution(const char* my_string) {
+	 //return 값은 malloc 등 동적 할당을 사용해주세요. 할당 길이는 상황에 맞게 변경해주세요.
+
+
+	int i = 0;
+	int j = 0;
+	while (j != 1) {
+		if (*(my_string + i) == '\0') {
+			i--;
+			cout << *(my_string + i) << endl;
+			j++;
+			break;
+		}
+		i++;
+	}
+	char* answer = (char*)malloc(i * sizeof(char));
+
+	string s = my_string;
+	cout << s << endl;
+	for (int j = 0; j <= i; j++) {
+		*(answer + j) = *(my_string +(i - j));
+	}
+	answer += '\0';
+	cout << answer << endl;
+	return answer;
+
+
+
+}
+
 int main()
 {
-	cout << "input yout name !: '";
+
+
+
+	solution("heloo world");
+
+	/*
 	
-	string name;
-	cin >> name;
-
-	string greet = "hello,  " + name + "!";
-
-	int pad = 1;
-	int rows = pad * 2 + 3;
+		int rows = pad * 2 + 3;
 	string::size_type cols = greet.size() + pad * 2 + 2;
 
 	cout << endl;
@@ -49,6 +79,11 @@ int main()
 		// 행이 끝나면 줄바꿈
 		cout << endl;
 	}
+	
+	
+	*/
+	int pad = 1;
+
 
 	return 0;
 
